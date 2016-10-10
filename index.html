@@ -164,28 +164,144 @@
         </section>
 
         <section>
+            <h2>Describe a scene in HTML</h2>
+
+            <pre style='color:#d1d1d1;background:#000000;width:1280px; max-width: 95%;overflow-x:hidden'><span style='color:#ff8906;'>&lt;</span><span
+                    style='color:#e66170; font-weight:bold; '>a</span><span style='color:#f6c1d0; '>-scene</span><span
+                    style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-box</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#4CC3D9"</span> position<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"-1 0.5 -3"</span> rotation<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"0 45 0"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-box</span><span
+                        style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-cylinder</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#FFC65D"</span> position<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"1 0.75 -3"</span> radius<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"0.5"</span> height<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"1.5"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-cylinder</span><span
+                        style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-sphere</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#EF2D5E"</span> position<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"0 1.25 -5"</span> radius<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"1.25"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-sphere</span><span
+                        style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-plane</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#7BC8A4"</span> position<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"0 0 -4"</span> rotation<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"-90 0 0"</span> width<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"4"</span> height<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"4"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-plane</span><span
+                        style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-sky</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#ECECEC"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-sky</span><span
+                        style='color:#ff8906; '>></span>
+<span style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-scene</span><span
+                        style='color:#ff8906; '>></span>
+</pre>
+
+            <p><a href="https://devpaul.github.io/aframe-experiments/helloworld.html">and have it rendered and VR Ready</a></p>
+        </section>
+
+        <section>
+            <h2>How does it work?</h2>
+
+            <p>A-Frame is an <b>Entity - Component - System</b> framework for THREE.js with WebVR support</p>
+
+            <div class="fragment">
+               <pre style='color:#d1d1d1;background:#000000;width:1280px; max-width: 95%;overflow-x:hidden'><span style='color:#ff8906;'>&lt;</span><span
+                               style='color:#e66170; font-weight:bold; '>a</span><span style='color:#f6c1d0; '>-scene</span><span
+                               style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-box</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#4CC3D9"</span> position<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"-1 0.5 -3"</span> rotation<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"0 45 0"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-box</span><span
+                                   style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-cylinder</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#FFC65D"</span> position<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"1 0.75 -3"</span> radius<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"0.5"</span> height<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"1.5"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-cylinder</span><span
+                                   style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-sphere</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#EF2D5E"</span> position<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"0 1.25 -5"</span> radius<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"1.25"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-sphere</span><span
+                                   style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-plane</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#7BC8A4"</span> position<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"0 0 -4"</span> rotation<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"-90 0 0"</span> width<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"4"</span> height<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"4"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-plane</span><span
+                                   style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-sky</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#ECECEC"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-sky</span><span
+                                   style='color:#ff8906; '>></span>
+<span style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-scene</span><span
+                                   style='color:#ff8906; '>></span>
+</pre></div>
+
             <aside class="notes">
-                TODO Talk about how A-Frame renders to a canvas, but uses custom elements so you can treat A-Frame
-                elements just like DOM elements
+
+            </aside>
+        </section>
+
+        <section>
+            <p>Entities are rendered to an underlying canvas, but they can be treated as standard HTML elements.</p>
+
+            <ul>
+                <li class="fragment">document.createElement()</li>
+                <li class="fragment">document.querySelector()</li>
+                <li class="fragment">getAttribute()</li>
+                <li class="fragment">setAttribute()</li>
+                <li class="fragment">appendChild()</li>
+            </ul>
+
+            <aside class="notes">
+                Front-end engineers can use familiar web paradigms to work with A-Frame elements.
             </aside>
         </section>
 
         <section>
             <h1>Demo Time!</h1>
-        </section>
-
-        <section>
             <aside class="notes">
-                TODO talk about A-Frame's Entity - Component - System model
-                Everything begins w/ a-entity
+                <ul>
+                    <li>document.querySelector</li>
+                    <li>getAttribute()</li>
+                    <li>getComputedAttribue()</li>
+                    <li>setAttribute()</li>
+                    <li>document.createElement()</li>
+                </ul>
             </aside>
         </section>
 
-        <section>
-            <aside class="notes">
-                TODO talk about how to extend and create your own components
-            </aside>
-        </section>
+        <!--
+            TODO We can go deeper at this point. If we want to add additional content we can talk about:
+
+            * A-Frame's Entity - Component - System model
+                * Everything begins w/ <a-entity>
+            * Talk about how to extend and create your own components
+        -->
 
         <section>
             <h1>A-Frame <img style="border: none; background: none; box-shadow: none" src="images/heart.png"> TypeScript</h1>
@@ -201,6 +317,34 @@
         </section>
 
         <section>
+            <h1>WebVR Tools</h1>
+        </section>
+
+        <section>
+            <a href="https://ephtracy.github.io/"><h2>MagicaVoxel</h2></a>
+            <img src="images/magicavoxel.png">
+
+            <aside class="notes">
+                a free lightweight 8-bit voxel editor and interactive path tracing renderer
+            </aside>
+        </section>
+
+        <section>
+            <a href="https://github.com/aframevr/aframe-inspector"><h2>A-Frame Inspector</h2></a>
+            <img src="images/aframe-inspector.png">
+
+            <aside class="notes">
+                The A-Frame Inspector is a visual tool for inspecting and tweaking scenes. With the Inspector, we can:
+
+                <ul>
+                    <li>Drag, rotate, and scale entities using handles and helpers</li>
+                    <li>Tweak an entity’s components and their properties using widgets</li>
+                    <li>Immediately see results from changing values without having to go back and forth between code and the browser</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
             <aside class="notes">
                 TODO Tools
                     * MagicaVoxels
@@ -210,11 +354,13 @@
         </section>
 
         <section>
-            <h2>VR Resources</h2>
+            <h2>More Resources</h2>
 
             <ul>
                 <li><a href="https://aframe.io">A-Frame</a></li>
                 <li><a href="https://mozvr.com/">Mozilla VR</a></li>
+                <li><a href="https://sketchfab.com/">SketchFab</a></li>
+                <li><a href="https://github.com/aframevr/awesome-aframe#components">Awesome A-frame</a></li>
                 <li><a href="https://github.com/devpaul/ts-dojo-aframe-boilerplate">TypeScript A-Frame Boilerplate</a></li>
                 <li><a href="https://ephtracy.github.io/">MagicaVoxels 8-bit model builder</a></li>
                 <li><a href="https://www.youtube.com/playlist?list=PLRtjMdoYXLf4inSULAHyCMqpIUj4cmBTr">A-Frame tutorials on YouTube</a></li>
