@@ -1,6 +1,6 @@
 # Let's Encrypt Presentation
 
-Presenting Let's Encrypt @ Iterate PHX. Created by Paul Shannon [@developerPaul](https://twitter.com/developerPaul).
+A-Frame Slides. Created by Paul Shannon [@developerPaul](https://twitter.com/developerPaul).
 
 ## Quick Start
 
