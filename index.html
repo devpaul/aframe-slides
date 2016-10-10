@@ -91,8 +91,22 @@
         </section>
 
         <section>
-            <h1>VR on the Web</h1>
-            (Demo Time)
+            <h2>The State of VR</h2>
+            <ul>
+                <li>Applications</li>
+                <li>Behind Storefronts</li>
+                <li>Installation required</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>WebVR Opens VR to the Web</h2>
+            <ul>
+                <li>Open VR experiences</li>
+                <li>Enhance information with VR</li>
+                <li>Instant access to content</li>
+                <li>Device agnostic platform</li>
+            </ul>
         </section>
 
         <section>
@@ -111,12 +125,88 @@
             <ul>
                 <li>List attached devices</li>
                 <li>Configuring VR displays (HMD)</li>
-                <li>Rendering support for WebGL, three.js; eventually UE4, Unity, etc</li>
+                <li>Rendering support for WebGL & three.js</li>
+                <li class="fragment"><span style="color: red">No</span> Controller Support</li>
+                <li class="fragment"><span style="color: red">Not</span> a Rendering Engine</li>
             </ul>
+
+            <aside class="notes">
+                WebVR gives us a way to work w/ headsets. For the rest we need other technologies like the
+                controller spec and THREE.js, which have a pretty huge learning curve
+            </aside>
+        </section>
+
+        <section data-background-video="video/boilerplate.mp4" data-background="black">
+            <div class="slide__boilerplate">
+                <p>Import WebVR polyfill</p>
+                <p>Set up camera</p>
+                <p>Set up lights</p>
+                <p>Initialize scene</p>
+                <p>Declare and pass canvas</p>
+                <p>Listen to window resize</p>
+                <p>Install VREffect</p>
+                <p>Instantiate renderer</p>
+                <p>Create render loop</p>
+                <p>Preload assets</p>
+                <p>Figure out responsiveness</p>
+                <p>Deal with metatags and mobile</p>
+            </div>
+
+            <aside class="notes">
+                WebVR simplifies working with devices, but hasn't simplified any of the work it takes to render
+                a scene.
+            </aside>
+        </section>
+
+        <section data-background-image="images/aframe-rendered-full.png">
+            <h1>A-Frame</h1>
+            <p>A declarative framework for building virtual reality experiences on the web</p>
         </section>
 
         <section>
-            <h1>A-Frame</h1>
+            <aside class="notes">
+                TODO Talk about how A-Frame renders to a canvas, but uses custom elements so you can treat A-Frame
+                elements just like DOM elements
+            </aside>
+        </section>
+
+        <section>
+            <h1>Demo Time!</h1>
+        </section>
+
+        <section>
+            <aside class="notes">
+                TODO talk about A-Frame's Entity - Component - System model
+                Everything begins w/ a-entity
+            </aside>
+        </section>
+
+        <section>
+            <aside class="notes">
+                TODO talk about how to extend and create your own components
+            </aside>
+        </section>
+
+        <section>
+            <h1>A-Frame <img style="border: none; background: none; box-shadow: none" src="images/heart.png"> TypeScript</h1>
+        </section>
+
+        <section>
+            <aside class="notes">
+                TODO fill out this section w/ how TypeScript makes it easier to pick up and use A-Frame
+                    * A-Frame uses THREE.js under the covers
+                    * A-Frame uses a lot of configuration
+                    * Using TypeScript lets the IDE help you navigate types
+            </aside>
+        </section>
+
+        <section>
+            <aside class="notes">
+                TODO Tools
+                    * MagicaVoxels
+                    * A-Frame scene builder
+                    * 100s of components available to extend your entity
+            </aside>
         </section>
 
         <section>
