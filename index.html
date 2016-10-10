@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>A-Frame and WebVR</title>
+
+    <meta name="description" content="A-Frame and WebVR">
+    <meta name="author" content="Paul Shannon">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/sky.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="resources/main.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'bower_components/reveal.js/css/print/pdf.css' : 'bower_components/reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section class="full">
+            <h1>WebVR and A-Frame</h1>
+            <img src="./images/aframe.png" height="50%">
+        </section>
+
+        <section>
+            In 2016 virtual reality has hit the mainstream.
+
+            <div class="speaker-notes">
+                * available in a number of formats and price points
+                * major console manufactures are planning for VR
+            </divnotes>
+        </section>
+
+        <section>
+            <h2>Inexpensive VR Experiences</h2>
+            <img src="./images/cardboard.png">
+        </section>
+
+        <section>
+            <h2>Mid-range VR Experiences</h2>
+            <div>
+                <img src="./images/gearvr.jpg" style="max-height: 300px; max-width: 500px">
+                <img src="./images/psvr.jpg" style="max-height: 300px; max-width: 500px">
+            </div>
+        </section>
+
+        <section>
+            <h2>High-End VR Experiences</h2>
+            <div>
+                <img src="./images/rift.jpg" style="max-height: 300px; max-width: 500px">
+                <img src="./images/vive.jpg" style="max-height: 300px; max-width: 500px">
+            </div>
+        </section>
+
+        <section>
+            <p>VR experiences are available at all levels.</p>
+
+            <p>WebVR aims to bring VR content through the ubiquitous browser platform.</p>
+        </section>
+
+        <section>
+            <h2>Generation-VR?</h2>
+            <img src="./images/generation-vr.jpg" style="max-height: 500px">
+        </section>
+
+        <section>
+            <h1>VR on the Web</h1>
+            (Demo Time)
+        </section>
+
+        <section>
+            <h1>WebVR</h1>
+        </section>
+
+        <section>
+            <h2>What is WebVR?</h2>
+
+            A <a href="https://w3c.github.io/webvr/">W3C specification</a> providing device-agnostic access to
+            headsets and sensors in the browser.
+        </section>
+
+        <section>
+            <h2>WebVR Features</h2>
+            <ul>
+                <li>List attached devices</li>
+                <li>Configuring VR displays (HMD)</li>
+                <li>Rendering support for WebGL, three.js; eventually UE4, Unity, etc</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>A-Frame</h1>
+        </section>
+
+        <section>
+            <h2>VR Resources</h2>
+
+            <ul>
+                <li><a href="https://aframe.io">A-Frame</a></li>
+                <li><a href="https://mozvr.com/">Mozilla VR</a></li>
+                <li><a href="https://github.com/devpaul/ts-dojo-aframe-boilerplate">TypeScript A-Frame Boilerplate</a></li>
+                <li><a href="https://ephtracy.github.io/">MagicaVoxels 8-bit model builder</a></li>
+                <li><a href="https://www.youtube.com/playlist?list=PLRtjMdoYXLf4inSULAHyCMqpIUj4cmBTr">A-Frame tutorials on YouTube</a></li>
+                <li><a href="http://vr.chromeexperiments.com/">Chrome VR Experiments (for Cardboard)</a></li>
+                <li><a href="https://webvr.info/">WebVR Info</a></li>
+                <li><a href="http://stackoverflow.com/questions/tagged/aframe">A-Frame on StackOverflow</a></li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="bower_components/reveal.js/js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: '100%',
+        height: '100%',
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
+</html>
