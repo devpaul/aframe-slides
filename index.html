@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>A-Frame and WebVR</title>
+
+    <meta name="description" content="A-Frame and WebVR">
+    <meta name="author" content="Paul Shannon">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/sky.css" id="theme">
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+    <link rel="stylesheet" href="resources/main.css">
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'bower_components/reveal.js/css/print/pdf.css' : 'bower_components/reveal.js/css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section class="full">
+            <h1>WebVR and A-Frame</h1>
+            <img src="./images/aframe.png" height="50%">
+        </section>
+
+        <section>
+            In 2016 virtual reality has hit the mainstream.
+
+            <div class="speaker-notes">
+                * available in a number of formats and price points
+                * major console manufactures are planning for VR
+            </divnotes>
+        </section>
+
+        <section>
+            <h2>Inexpensive VR Experiences</h2>
+            <img src="./images/cardboard.png">
+        </section>
+
+        <section>
+            <h2>Mid-range VR Experiences</h2>
+            <div>
+                <img src="./images/gearvr.jpg" style="max-height: 300px; max-width: 500px">
+                <img src="./images/psvr.jpg" style="max-height: 300px; max-width: 500px">
+            </div>
+        </section>
+
+        <section>
+            <h2>High-End VR Experiences</h2>
+            <div>
+                <img src="./images/rift.jpg" style="max-height: 300px; max-width: 500px">
+                <img src="./images/vive.jpg" style="max-height: 300px; max-width: 500px">
+            </div>
+        </section>
+
+        <section>
+            <p>VR experiences are available at all levels.</p>
+
+            <p>WebVR aims to bring VR content through the ubiquitous browser platform.</p>
+        </section>
+
+        <section>
+            <h2>Generation-VR?</h2>
+            <img src="./images/generation-vr.jpg" style="max-height: 500px">
+        </section>
+
+        <section>
+            <h2>The State of VR</h2>
+            <ul>
+                <li>Applications</li>
+                <li>Behind Storefronts</li>
+                <li>Installation required</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>WebVR Opens VR to the Web</h2>
+            <ul>
+                <li>Open VR experiences</li>
+                <li>Enhance information with VR</li>
+                <li>Instant access to content</li>
+                <li>Device agnostic platform</li>
+            </ul>
+        </section>
+
+        <section>
+            <h1>WebVR</h1>
+        </section>
+
+        <section>
+            <h2>What is WebVR?</h2>
+
+            A <a href="https://w3c.github.io/webvr/">W3C specification</a> providing device-agnostic access to
+            headsets and sensors in the browser.
+        </section>
+
+        <section>
+            <h2>WebVR Features</h2>
+            <ul>
+                <li>List attached devices</li>
+                <li>Configuring VR displays (HMD)</li>
+                <li>Rendering support for WebGL & three.js</li>
+                <li class="fragment"><span style="color: red">No</span> Controller Support</li>
+                <li class="fragment"><span style="color: red">Not</span> a Rendering Engine</li>
+            </ul>
+
+            <aside class="notes">
+                WebVR gives us a way to work w/ headsets. For the rest we need other technologies like the
+                controller spec and THREE.js, which have a pretty huge learning curve
+            </aside>
+        </section>
+
+        <section data-background-video="video/boilerplate.mp4" data-background="black">
+            <div class="slide__boilerplate">
+                <p>Import WebVR polyfill</p>
+                <p>Set up camera</p>
+                <p>Set up lights</p>
+                <p>Initialize scene</p>
+                <p>Declare and pass canvas</p>
+                <p>Listen to window resize</p>
+                <p>Install VREffect</p>
+                <p>Instantiate renderer</p>
+                <p>Create render loop</p>
+                <p>Preload assets</p>
+                <p>Figure out responsiveness</p>
+                <p>Deal with metatags and mobile</p>
+            </div>
+
+            <aside class="notes">
+                WebVR simplifies working with devices, but hasn't simplified any of the work it takes to render
+                a scene.
+            </aside>
+        </section>
+
+        <section data-background-image="images/aframe-rendered-full.png">
+            <h1>A-Frame</h1>
+            <p>A declarative framework for building virtual reality experiences on the web</p>
+        </section>
+
+        <section>
+            <h2>Describe a scene in HTML</h2>
+
+            <pre style='color:#d1d1d1;background:#000000;width:1280px; max-width: 95%;overflow-x:hidden'><span style='color:#ff8906;'>&lt;</span><span
+                    style='color:#e66170; font-weight:bold; '>a</span><span style='color:#f6c1d0; '>-scene</span><span
+                    style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-box</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#4CC3D9"</span> position<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"-1 0.5 -3"</span> rotation<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"0 45 0"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-box</span><span
+                        style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-cylinder</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#FFC65D"</span> position<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"1 0.75 -3"</span> radius<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"0.5"</span> height<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"1.5"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-cylinder</span><span
+                        style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-sphere</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#EF2D5E"</span> position<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"0 1.25 -5"</span> radius<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"1.25"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-sphere</span><span
+                        style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-plane</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#7BC8A4"</span> position<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"0 0 -4"</span> rotation<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"-90 0 0"</span> width<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"4"</span> height<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"4"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-plane</span><span
+                        style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                        style='color:#f6c1d0; '>-sky</span> color<span style='color:#d2cd86; '>=</span><span
+                        style='color:#00c4c4; '>"#ECECEC"</span><span style='color:#ff8906; '>></span><span
+                        style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-sky</span><span
+                        style='color:#ff8906; '>></span>
+<span style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-scene</span><span
+                        style='color:#ff8906; '>></span>
+</pre>
+
+            <p><a href="https://devpaul.github.io/aframe-experiments/helloworld.html">and have it rendered and VR Ready</a></p>
+        </section>
+
+        <section>
+            <h2>How does it work?</h2>
+
+            <p>A-Frame is an <b>Entity - Component - System</b> framework for THREE.js with WebVR support</p>
+
+            <div class="fragment">
+               <pre style='color:#d1d1d1;background:#000000;width:1280px; max-width: 95%;overflow-x:hidden'><span style='color:#ff8906;'>&lt;</span><span
+                               style='color:#e66170; font-weight:bold; '>a</span><span style='color:#f6c1d0; '>-scene</span><span
+                               style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-box</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#4CC3D9"</span> position<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"-1 0.5 -3"</span> rotation<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"0 45 0"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-box</span><span
+                                   style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-cylinder</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#FFC65D"</span> position<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"1 0.75 -3"</span> radius<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"0.5"</span> height<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"1.5"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-cylinder</span><span
+                                   style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-sphere</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#EF2D5E"</span> position<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"0 1.25 -5"</span> radius<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"1.25"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-sphere</span><span
+                                   style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-plane</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#7BC8A4"</span> position<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"0 0 -4"</span> rotation<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"-90 0 0"</span> width<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"4"</span> height<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"4"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-plane</span><span
+                                   style='color:#ff8906; '>></span>
+    <span style='color:#ff8906; '>&lt;</span><span style='color:#e66170; font-weight:bold; '>a</span><span
+                                   style='color:#f6c1d0; '>-sky</span> color<span style='color:#d2cd86; '>=</span><span
+                                   style='color:#00c4c4; '>"#ECECEC"</span><span style='color:#ff8906; '>></span><span
+                                   style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-sky</span><span
+                                   style='color:#ff8906; '>></span>
+<span style='color:#ff8906; '>&lt;/</span><span style='color:#f6c1d0; '>a-scene</span><span
+                                   style='color:#ff8906; '>></span>
+</pre></div>
+
+            <aside class="notes">
+
+            </aside>
+        </section>
+
+        <section>
+            <p>Entities are rendered to an underlying canvas, but they can be treated as standard HTML elements.</p>
+
+            <ul>
+                <li class="fragment">document.createElement()</li>
+                <li class="fragment">document.querySelector()</li>
+                <li class="fragment">getAttribute()</li>
+                <li class="fragment">setAttribute()</li>
+                <li class="fragment">appendChild()</li>
+            </ul>
+
+            <aside class="notes">
+                Front-end engineers can use familiar web paradigms to work with A-Frame elements.
+            </aside>
+        </section>
+
+        <section>
+            <h1><a href="https://devpaul.github.io/aframe-experiments/">Demo Time!</a></h1>
+            <aside class="notes">
+                <ul>
+                    <li>document.querySelector</li>
+                    <li>getAttribute()</li>
+                    <li>getComputedAttribue()</li>
+                    <li>setAttribute()</li>
+                    <li>document.createElement()</li>
+                </ul>
+            </aside>
+        </section>
+
+        <!--
+            TODO We can go deeper at this point. If we want to add additional content we can talk about:
+
+            * A-Frame's Entity - Component - System model
+                * Everything begins w/ <a-entity>
+            * Talk about how to extend and create your own components
+        -->
+
+        <section>
+            <h1>A-Frame <img style="border: none; background: none; box-shadow: none" src="images/heart.png"> TypeScript</h1>
+        </section>
+
+        <section>
+            <p>Learning a new framework is <b>HARD</b>.</p>
+        </section>
+
+        <section>
+            <p>Behind the scenes A-Frame is blending some serious tech</p>
+            <ul>
+                <li class="fragment"><a href="https://threejs.org/">THREE.js</a></li>
+                <li class="fragment"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/registerElement">Custom Elements</a></li>
+                <li class="fragment"><a href="https://w3c.github.io/webvr/">WebVR</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <p>TypeScript's IDE integration and compile-time checks <br> help you use a new API with confidence</p>
+
+            <div class="fragment">
+                <p>So we created some ;)</p>
+
+                <ul>
+                    <li><a href="https://github.com/devpaul/aframe-typings">AFrame Typings</a></li>
+                    <li><a href="https://github.com/devpaul/ts-dojo-aframe-boilerplate">AFrame Boilerplate</a></li>
+                </ul>
+            </div>
+
+            <aside class="notes">
+                <ul>
+                    <li>show aframe-typings</li>
+                    <li>demo bouncing/app</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <h1>WebVR Tools</h1>
+        </section>
+
+        <section>
+            <a href="https://ephtracy.github.io/"><h2>MagicaVoxel</h2></a>
+            <img src="images/magicavoxel.png">
+
+            <aside class="notes">
+                a free lightweight 8-bit voxel editor and interactive path tracing renderer
+            </aside>
+        </section>
+
+        <section>
+            <a href="https://github.com/aframevr/aframe-inspector"><h2>A-Frame Inspector</h2></a>
+            <img src="images/aframe-inspector.png">
+
+            <aside class="notes">
+                The A-Frame Inspector is a visual tool for inspecting and tweaking scenes. With the Inspector, we can:
+
+                <ul>
+                    <li>Drag, rotate, and scale entities using handles and helpers</li>
+                    <li>Tweak an entity’s components and their properties using widgets</li>
+                    <li>Immediately see results from changing values without having to go back and forth between code and the browser</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <h1>Community</h1>
+
+
+            <div class="captioned-image-row">
+                <div>
+                    <img data-src="images/github.png">
+                    <i>60 contributors, 3000 Stargazers</i>
+                </div>
+                <div>
+                    <img data-src="images/slack.png">
+                    <i>1400 members on Slack</i>
+                </div>
+                <div>
+                    <img data-src="images/scene-collage-circle.png">
+                    <i>100s of featured projects</i>
+                </div>
+            </div>
+            <aside class="notes">
+                <ul>
+                    <li>User created components like: Physics, and aframe-awesome</li>
+                </ul>
+            </aside>
+        </section>
+
+        <section>
+            <h2>More Resources</h2>
+
+            <ul>
+                <li><a href="https://aframe.io">A-Frame</a></li>
+                <li><a href="https://mozvr.com/">Mozilla VR</a></li>
+                <li><a href="https://sketchfab.com/">SketchFab</a></li>
+                <li><a href="https://github.com/aframevr/awesome-aframe#components">Awesome A-frame</a></li>
+                <li><a href="https://github.com/devpaul/ts-dojo-aframe-boilerplate">TypeScript A-Frame Boilerplate</a></li>
+                <li><a href="https://ephtracy.github.io/">MagicaVoxels 8-bit model builder</a></li>
+                <li><a href="https://www.youtube.com/playlist?list=PLRtjMdoYXLf4inSULAHyCMqpIUj4cmBTr">A-Frame tutorials on YouTube</a></li>
+                <li><a href="http://vr.chromeexperiments.com/">Chrome VR Experiments (for Cardboard)</a></li>
+                <li><a href="https://webvr.info/">WebVR Info</a></li>
+                <li><a href="http://stackoverflow.com/questions/tagged/aframe">A-Frame on StackOverflow</a></li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+<script src="bower_components/reveal.js/js/reveal.js"></script>
+
+<script>
+
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        width: '100%',
+        height: '100%',
+
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+        // Optional reveal.js plugins
+        dependencies: [
+            {
+                src: 'bower_components/reveal.js/lib/js/classList.js', condition: function () {
+                return !document.body.classList;
+            }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/markdown/marked.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/markdown/markdown.js', condition: function () {
+                return !!document.querySelector('[data-markdown]');
+            }
+            },
+            {
+                src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, condition: function () {
+                return !!document.querySelector('pre code');
+            }, callback: function () {
+                hljs.initHighlightingOnLoad();
+            }
+            },
+            {src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true},
+            {src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true}
+        ]
+    });
+
+</script>
+
+</body>
+</html>
