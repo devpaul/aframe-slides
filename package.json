@@ -12,7 +12,8 @@
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-stylus": "^1.2.0",
     "grunt-contrib-watch": "^1.0.0",
-    "grunt-devserver": "^0.6.0"
+    "grunt-devserver": "^0.6.0",
+    "grunt-gh-pages": "^2.0.0"
   },
   "dependencies": {
     "grunt-devserver": "^0.6.0"

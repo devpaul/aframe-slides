@@ -1,10 +1,9 @@
-# Let's Encrypt Presentation
+# A-Frame and WebVR Presentation
 
 A-Frame Slides. Created by Paul Shannon [@developerPaul](https://twitter.com/developerPaul).
 
 ## Quick Start
 
-* `bower install`
 * `npm install`
 * `grunt serve`
 * open [Presentation @ http://localhost:8765](http://localhost:8765)
@@ -25,3 +24,6 @@ npm install -g bower
 ## Attribution and License 
 
 See LICENSE.md for attribution and license
+
+Thanks to [A-Frame Presentation Kit](https://github.com/aframevr/aframe-presentation-kit) for the use of some slides
+	and assets
